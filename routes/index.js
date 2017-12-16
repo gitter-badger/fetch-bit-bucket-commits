@@ -1,15 +1,22 @@
-const KEY = 'Z3EB92dPayJF6G2bau';
-const SECRET = 'RURP7xcfu2K4PVAzMv8TrhVHXa798w6R';
+/**
+ * @author Semih Onay
+ * @email semionay@gmail.coö
+ * @create date 2017-12-16 05:48:24
+ * @modify date 2017-12-16 05:48:24
+ * @desc index.js
+*/
 
-const express = require('express');
-const fetch = require('node-fetch');
+import express from 'express'
+import fetch from 'node-fetch'
+import publisher from '../rabbitMQ/publisher'
 
-const router = express.Router();
-
+const router = express.Router()
 /* GET home page. */
 router.get('/', (req, res) => {
-  const { repo } = req.query;
-  const { len } = req.query;
+  const { repo } = req.query
+  const { len } = req.query
+
+  /* Get BitBucket repo info */
   fetch(
     `https://bitbucket.org/api/2.0/repositories/setrow/${repo}/commits?pagelen=${len}`,
     {
@@ -18,18 +25,15 @@ router.get('/', (req, res) => {
       credentials: true,
       headers: {
         Authorization: `Basic ${
-          Buffer.from('sys@setrow.com:Pz0149**SS3').toString('base64')}`,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-    },
+          Buffer.from(process.env.AUTH).toString('base64')}`,
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }
+    }
   ).then(response => response.json()).then((json) => {
-    const data = {
-      repoName: json.values[0].repository.full_name,
-      author: json.values[0].author.user.display_name,
-      message: json.values[0].message,
-    };
-    res.render('index', { title: 'Test', d: data });
-  });
-});
+    /* Send to RabbitMQ */
+    publisher(JSON.stringify(json))
+    res.render('index', { title: json.values[0].repository.full_name, d: json })
+  })
+})
 
-module.exports = router;
+module.exports = router

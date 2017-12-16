@@ -1,0 +1,36 @@
+/**
+ * @author Semih Onay
+ * @email semionay@gmail.com
+ * @create date 2017-12-16 05:50:37
+ * @modify date 2017-12-16 05:50:37
+ * @desc appTest.js
+*/
+
+import chai from 'chai'
+import chaiHttp from 'chai-http'
+
+import app from '../app'
+
+chai.should()
+chai.use(chaiHttp)
+
+/* Test the /GET route */
+describe('app index route', () => {
+  it('it should GET /', (done) => {
+    chai.request(app)
+      .get('/')
+      .end((err, res) => {
+        res.should.have.status(200)
+        done()
+      })
+  })
+
+  it('it should handle 404 error', (done) => {
+    chai.request(app)
+      .get('/notExist')
+      .end((err, res) => {
+        res.should.have.status(404)
+        done()
+      })
+  })
+})
