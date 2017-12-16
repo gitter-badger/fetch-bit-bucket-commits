@@ -1,8 +1,58 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  height: 100%;
 }
 
-a {
-  color: #00B7FF;
+html, body {
+  margin: 0;
+}
+
+body {
+  min-height: auto;
+  box-sizing: border-box;
+}
+
+header {
+  padding: 50px 0 32px 0;
+  background-color: #00d586;
+  color: white;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+main, header > h1 {
+  padding: 0 16px;
+  max-width: 760px;
+  box-sizing: border-box;
+  margin: 0 auto;
+}
+
+main {
+  margin: 24px auto;
+  box-sizing: border-box;
+}
+
+pre {
+  white-space: pre-wrap;
+  background-color: #282c34;
+  padding: 16px;
+  width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+pre code {
+  word-break: break-word;
+}
+
+.is-invisible {
+  opacity: 0;
+}
+
+.subscription-details {
+  transition: opacity 1s;
+}
+
+@media (max-width: 600px) {
+  header > h1 {
+    font-size: 36px;
+  }
 }
