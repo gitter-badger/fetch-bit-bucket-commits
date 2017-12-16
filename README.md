@@ -1,5 +1,6 @@
 # BitBucket Commits Dashboard
 [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4556ea5c3f2315e53f5f/maintainability)](https://codeclimate.com/github/Semyonic/fetch-bit-bucket-commits/maintainability)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/d675d5c4b04c411cb1345f69eeba0722)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=Semyonic/fetchBitBucketCommits&amp;utm_campaign=Badge_Grade)
 [![bitHound Overall Score](https://www.bithound.io/projects/badges/29c5f990-e279-11e7-8e01-5f4701a19498/score.svg)](https://www.bithound.io/github/Semyonic/fetchBitBucketCommits)
 [![Inline docs](http://inch-ci.org/github/Semyonic/fetchBitBucketCommits.svg?branch=master)](http://inch-ci.org/github/Semyonic/fetchBitBucketCommits)
